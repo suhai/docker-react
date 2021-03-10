@@ -1,12 +1,12 @@
-language: generic
 sudo: required
+language: generic
 services:
   - docker
 
 before_install:
-  - docker build -t swy/docker-react -f Dockerfile.dev .
+  - docker build -t suhai/docker-react -f Dockerfile.dev .
 script:
-  - docker run swy/docker-react npm run test -- --coverage
+  - docker run suhai/docker-react npm run test -- --coverage
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
@@ -18,4 +18,4 @@ deploy:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+    secure: $AWS_SECRET_KEY
